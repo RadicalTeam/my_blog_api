@@ -10,10 +10,7 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class BlogService {
@@ -33,14 +30,16 @@ public class BlogService {
 
     public void createNewBlog(Map<String, String> content) throws IOException {
         String prefixFileName = UUID.randomUUID().toString();
-        byte[] MDSource = content.get("mdSource").getBytes();
-        byte[] HTMLSource = content.get("content").getBytes();
-        Files.write(FileWriterUtil.getNewMDFilePath(prefixFileName), MDSource);
-        Files.write(FileWriterUtil.getNewHTMLFilePath(prefixFileName), HTMLSource);
+//        byte[] MDSource = content.get("mdSource").getBytes();
+//        byte[] HTMLSource = content.get("content").getBytes();
+//        Files.write(FileWriterUtil.getNewMDFilePath(prefixFileName), MDSource);
+//        Files.write(FileWriterUtil.getNewHTMLFilePath(prefixFileName), HTMLSource);
 
         Blog blog = new Blog();
-        blog.setBlog_title(content.get("title"));
+        Date createDate = new Date();
+        blog.setTitle(content.get("title"));
         blog.setLocation(FileReaderUtil.BLOG_FOLDER.concat(File.separator).concat(prefixFileName));
+        blog.setCreateAt(createDate);
         blogRepository.save(blog);
     }
 }

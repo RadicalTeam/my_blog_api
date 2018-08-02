@@ -26,7 +26,7 @@ public class UploadService {
            String fileStoreLocation = FileReaderUtil.BLOG_FOLDER + "/" + file.getOriginalFilename();
             Blog blog = new Blog();
             blog.setLocation(fileStoreLocation);
-            blog.setBlog_title(title);
+            blog.setTitle(title);
             blogRepository.save(blog);
        }
     }
