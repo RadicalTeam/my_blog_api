@@ -1,4 +1,4 @@
-package com.data.postgres.postgres_data;
+package com.data.postgres.my_blog_api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,11 +1,9 @@
-package com.data.postgres.postgres_data.util;
+package com.data.postgres.my_blog_api.util;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
 import java.net.URL;
-import java.nio.file.Files;
 
 public class FileReaderUtilTest {
 

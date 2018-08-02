@@ -1,7 +1,7 @@
-package com.data.postgres.postgres_data.repo;
+package com.data.postgres.my_blog_api.repo;
 
-import com.data.postgres.postgres_data.PostgresDataApplication;
-import com.data.postgres.postgres_data.service.BlogService;
+import com.data.postgres.my_blog_api.PostgresDataApplication;
+import com.data.postgres.my_blog_api.service.BlogService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

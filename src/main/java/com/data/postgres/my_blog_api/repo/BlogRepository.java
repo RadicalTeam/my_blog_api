@@ -1,6 +1,6 @@
-package com.data.postgres.postgres_data.repo;
+package com.data.postgres.my_blog_api.repo;
 
-import com.data.postgres.postgres_data.dto.Blog;
+import com.data.postgres.my_blog_api.dto.Blog;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BlogRepository extends JpaRepository<Blog, Integer> {

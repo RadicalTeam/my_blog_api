@@ -1,8 +1,8 @@
-package com.data.postgres.postgres_data.service;
+package com.data.postgres.my_blog_api.service;
 
-import com.data.postgres.postgres_data.dto.Blog;
-import com.data.postgres.postgres_data.repo.BlogRepository;
-import com.data.postgres.postgres_data.util.FileReaderUtil;
+import com.data.postgres.my_blog_api.dto.Blog;
+import com.data.postgres.my_blog_api.repo.BlogRepository;
+import com.data.postgres.my_blog_api.util.FileReaderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

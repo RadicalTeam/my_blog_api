@@ -1,4 +1,4 @@
-package com.data.postgres.postgres_data.util;
+package com.data.postgres.my_blog_api.util;
 
 import java.io.File;
 import java.nio.file.Path;

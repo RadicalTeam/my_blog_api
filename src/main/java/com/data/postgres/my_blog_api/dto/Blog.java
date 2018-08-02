@@ -1,4 +1,4 @@
-package com.data.postgres.postgres_data.dto;
+package com.data.postgres.my_blog_api.dto;
 
 import lombok.Getter;
 import lombok.Setter;

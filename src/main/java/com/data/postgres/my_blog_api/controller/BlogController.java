@@ -1,8 +1,6 @@
-package com.data.postgres.postgres_data.controller;
+package com.data.postgres.my_blog_api.controller;
 
-import com.data.postgres.postgres_data.dto.Blog;
-import com.data.postgres.postgres_data.service.BlogService;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.data.postgres.my_blog_api.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
