@@ -16,14 +16,6 @@ public class BlogController {
     @Autowired
     BlogService blogService;
 
-    @GetMapping(path = "/add")
-    public @ResponseBody String addNewBlog(@RequestParam String title, @RequestParam String location) {
-        Blog blog = new Blog();
-        blog.setBlog_title(title);
-        blog.setLocation(location);
-        blogService.saveBlog(blog);
-        return "Saved";
-    }
 
     @GetMapping(path= "/{id}")
     public Object getBlogById(@PathVariable Integer id){
@@ -39,4 +31,12 @@ public class BlogController {
         return resMap;
     }
 
+    @PostMapping(path= "/add")
+    public Map<String, String> addNewBlog(@RequestBody Map<String, String> content) throws IOException {
+        this.blogService.createNewBlog(content);
+        System.out.println("content: [ " + content + " ]");
+        Map<String, String> res = new HashMap<>();
+        res.put("message", "Succeed");
+        return res;
+    };
 }

@@ -3,12 +3,17 @@ package com.data.postgres.postgres_data.service;
 import com.data.postgres.postgres_data.dto.Blog;
 import com.data.postgres.postgres_data.repo.BlogRepository;
 import com.data.postgres.postgres_data.util.FileReaderUtil;
+import com.data.postgres.postgres_data.util.FileWriterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class BlogService {
@@ -16,17 +21,26 @@ public class BlogService {
     @Autowired
     BlogRepository blogRepository;
 
-    public void saveBlog(Blog blog) {
-        blogRepository.save(blog);
-    }
-
     public String getBlog(Integer id) throws IOException {
         Optional<Blog> blogOptional = blogRepository.findById(id);
         if (blogOptional.isPresent()) {
             Blog blog = blogOptional.get();
-            String location = blog.getLocation();
+            String location = blog.getLocation()  + ".html";
             return FileReaderUtil.readBlogByLocation(location);
         }
         throw new NoSuchElementException();
+    }
+
+    public void createNewBlog(Map<String, String> content) throws IOException {
+        String prefixFileName = UUID.randomUUID().toString();
+        byte[] MDSource = content.get("mdSource").getBytes();
+        byte[] HTMLSource = content.get("content").getBytes();
+        Files.write(FileWriterUtil.getNewMDFilePath(prefixFileName), MDSource);
+        Files.write(FileWriterUtil.getNewHTMLFilePath(prefixFileName), HTMLSource);
+
+        Blog blog = new Blog();
+        blog.setBlog_title(content.get("title"));
+        blog.setLocation(FileReaderUtil.BLOG_FOLDER.concat(File.separator).concat(prefixFileName));
+        blogRepository.save(blog);
     }
 }
