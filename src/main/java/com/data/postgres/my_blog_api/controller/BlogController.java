@@ -1,11 +1,13 @@
 package com.data.postgres.my_blog_api.controller;
 
+import com.data.postgres.my_blog_api.dto.Blog;
 import com.data.postgres.my_blog_api.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -37,4 +39,9 @@ public class BlogController {
         res.put("message", "Succeed");
         return res;
     };
+
+    @GetMapping(path = "/list")
+    public List<Blog> getAllBlogs() {
+        return this.blogService.getAllBlogs();
+    }
 }
