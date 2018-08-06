@@ -29,7 +29,7 @@ public class BlogService {
     }
 
     public List<Blog> getAllBlogs() {
-        return blogRepository.findAll();
+        return blogRepository.findAllByPublishedIsTrue();
     }
 
     public void createNewBlog(Map<String, String> content) throws IOException {
@@ -46,5 +46,22 @@ public class BlogService {
         blog.setLocation(FileReaderUtil.BLOG_FOLDER.concat(File.separator).concat(prefixFileName));
         blog.setCreateAt(createDate);
         blogRepository.save(blog);
+    }
+
+
+    public void saveBlog(Map<String, String> blog) throws IOException {
+        String originId = blog.get("id");
+        if (originId != null && blogRepository.existsById(Integer.parseInt(blog.get("id")))) {
+            Integer blogId = Integer.parseInt(blog.get("id"));
+            updateFile(blog.get("mdSource"), blogId);
+        } else {
+            createNewBlog(blog);
+        }
+
+    }
+
+    void updateFile(String content, Integer id) throws IOException {
+        Blog blog = blogRepository.findById(id).get();
+        FileWriterUtil.updateMDFile(blog.getLocation(), content);
     }
 }

@@ -19,6 +19,8 @@ public class Blog {
     @Column(unique = true)
     private String location;
 
+    private boolean published = false;
+
     private String brief;
 
     @Column(name = "view_time")

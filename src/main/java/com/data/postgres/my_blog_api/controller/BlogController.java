@@ -33,7 +33,7 @@ public class BlogController {
 
     @PostMapping(path= "/add")
     public Map<String, String> addNewBlog(@RequestBody Map<String, String> content) throws IOException {
-        this.blogService.createNewBlog(content);
+        this.blogService.saveBlog(content);
         System.out.println("content: [ " + content + " ]");
         Map<String, String> res = new HashMap<>();
         res.put("message", "Succeed");
