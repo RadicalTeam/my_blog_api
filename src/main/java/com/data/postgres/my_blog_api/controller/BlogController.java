@@ -31,14 +31,22 @@ public class BlogController {
         return resMap;
     }
 
-    @PostMapping(path= "/add")
+    @PostMapping(path= "/save")
     public Map<String, String> addNewBlog(@RequestBody Map<String, String> content) throws IOException {
-        this.blogService.saveBlog(content);
+        this.blogService.createNewBlog(content);
         System.out.println("content: [ " + content + " ]");
         Map<String, String> res = new HashMap<>();
         res.put("message", "Succeed");
         return res;
-    };
+    }
+
+    @PutMapping(path= "/save")
+    public Map<String, String> updateBlog(@RequestBody Map<String, String> content) throws IOException {
+        this.blogService.updateBlog(content);
+        Map<String, String> res = new HashMap<>();
+        res.put("message", "Succeed");
+        return res;
+    }
 
     @GetMapping(path = "/list")
     public List<Blog> getAllBlogs() {
